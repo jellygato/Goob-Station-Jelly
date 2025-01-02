@@ -1,0 +1,42 @@
+- type: entity
+  id: Boombox
+  name: boombox
+  parent: BaseItem
+  description: A machine capable of playing a wide variety of tunes, on the go! Enjoyment not guaranteed.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/jukebox.rsi
+    layers:
+    - state: "off"
+      map: ["enum.JukeboxVisualLayers.Base"]
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: ClothingSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.6
+  - type: HeldSpeedModifier
+  - type: Jukebox
+    onState: on
+    offState: off
+    selectState: select
+  - type: Appearance
+  - type: ExtensionCableReceiver
+  - type: ActivatableUI
+    key: enum.JukeboxUiKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.JukeboxUiKey.Key:
+          type: JukeboxBoundUserInterface
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: PowerCellDraw
+    useRate: 100
